@@ -3,12 +3,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Contact = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <section id="contact" className="py-20 px-6 bg-charcoal-900/30">
+    <section ref={ref} id="contact" className="py-20 px-6 bg-charcoal-900/30">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
             Let's <span className="gradient-text">Connect</span>
           </h2>
@@ -16,11 +27,16 @@ const Contact = () => {
             Interested in collaboration, research opportunities, or just want to chat about AI? 
             I'd love to hear from you.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="glass-card p-8 rounded-2xl">
+          <motion.div 
+            className="glass-card p-8 rounded-2xl"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <h3 className="text-2xl font-medium mb-6">Send a Message</h3>
             <form className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
@@ -51,11 +67,20 @@ const Contact = () => {
                 Send Message
               </Button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="glass-card p-8 rounded-2xl">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
+            <motion.div 
+              className="glass-card p-8 rounded-2xl"
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <h3 className="text-2xl font-medium mb-6">Get in Touch</h3>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
@@ -88,9 +113,13 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="glass-card p-8 rounded-2xl">
+            <motion.div 
+              className="glass-card p-8 rounded-2xl"
+              whileHover={{ y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <h3 className="text-xl font-medium mb-4">Research Interests</h3>
               <div className="flex flex-wrap gap-2">
                 {["Large Language Models", "NLP", "HCI", "Ethical AI", "Product Management", "Machine Learning"].map((interest) => (
@@ -102,8 +131,8 @@ const Contact = () => {
                   </span>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

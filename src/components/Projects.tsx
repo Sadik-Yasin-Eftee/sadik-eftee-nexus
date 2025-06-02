@@ -1,8 +1,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Projects = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   const projects = [
     {
       title: "Fake News Detection",
@@ -34,24 +40,55 @@ const Projects = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section id="projects" className="py-20 px-6">
+    <section ref={ref} id="projects" className="py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl font-light text-foreground/70 max-w-2xl mx-auto">
             A collection of projects spanning machine learning, web development, and AI research
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={project.title}
               className="glass-card p-8 rounded-2xl group hover:bg-white/10 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              variants={itemVariants}
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="aspect-video bg-gradient-to-br from-icy-blue-400/10 to-lavender-400/10 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
                 <img
@@ -90,9 +127,9 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

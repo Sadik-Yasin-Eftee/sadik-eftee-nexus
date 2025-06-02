@@ -1,6 +1,24 @@
 
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 const Experience = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   const experiences = [
+    {
+      company: "ShopUp",
+      role: "Product Management Intern",
+      period: "May 2024 - Present",
+      description: "Leading product initiatives for logistics optimization and merchant satisfaction improvements. Working on data-driven features to enhance the e-commerce ecosystem for small businesses.",
+      achievements: [
+        "Optimized RedX logistics data pipeline",
+        "Automated salary processing systems",
+        "Improved merchant satisfaction metrics through data analysis"
+      ]
+    },
     {
       company: "ShopUp",
       role: "ML Engineering Intern",
@@ -14,57 +32,83 @@ const Experience = () => {
     },
     {
       company: "Grameen Communications",
-      role: "Product Management Intern",
-      period: "2022 - 2023",
-      description: "Led product development initiatives for digital financial services, focusing on user experience design and market research for underserved communities.",
+      role: "ML Engineering Intern",
+      period: "June - September 2023",
+      description: "Built and tested intelligent chatbot systems with advanced intent-matching capabilities. Contributed to credit scoring algorithms for microfinance applications serving underbanked communities.",
       achievements: [
-        "Conducted user research with 500+ participants",
-        "Defined product roadmap for fintech solutions",
-        "Improved user onboarding conversion by 25%"
-      ]
-    },
-    {
-      company: "Research Assistant",
-      role: "AI Research Lab, IUT",
-      period: "2021 - 2024",
-      description: "Conducted independent research on natural language processing and fake news detection under faculty supervision. Published findings in international conferences.",
-      achievements: [
-        "Published 3 peer-reviewed papers",
-        "Developed novel NLP algorithms",
-        "Mentored junior researchers"
+        "Developed chatbot with 90%+ intent accuracy",
+        "Implemented credit scoring model for microfinance",
+        "Handled end-to-end ML pipeline from data cleaning to deployment"
       ]
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section id="experience" className="py-20 px-6">
+    <section ref={ref} id="experience" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
             Professional <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-xl font-light text-foreground/70 max-w-2xl mx-auto">
-            Building impactful solutions across product management, machine learning, and research
+            Building impactful solutions across product management, machine learning, and fintech innovation
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-icy-blue-400 to-lavender-400 hidden md:block" />
 
-          <div className="space-y-12">
+          <motion.div 
+            className="space-y-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
             {experiences.map((exp, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="relative flex items-start space-x-8"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                variants={itemVariants}
               >
                 {/* Timeline dot */}
-                <div className="hidden md:flex w-16 h-16 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-full items-center justify-center flex-shrink-0 relative z-10">
+                <motion.div 
+                  className="hidden md:flex w-16 h-16 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-full items-center justify-center flex-shrink-0 relative z-10"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <div className="w-6 h-6 bg-background rounded-full" />
-                </div>
+                </motion.div>
 
-                <div className="glass-card p-8 rounded-2xl flex-1 hover:bg-white/10 transition-all duration-300">
+                <motion.div 
+                  className="glass-card p-8 rounded-2xl flex-1 hover:bg-white/10 transition-all duration-300"
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
                       <h3 className="text-2xl font-medium text-icy-blue-400 mb-1">
@@ -85,18 +129,24 @@ const Experience = () => {
 
                   <div className="space-y-2">
                     {exp.achievements.map((achievement, i) => (
-                      <div key={i} className="flex items-center space-x-3">
+                      <motion.div 
+                        key={i} 
+                        className="flex items-center space-x-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                        transition={{ delay: 0.2 + (index * 0.3) + (i * 0.1) }}
+                      >
                         <div className="w-1.5 h-1.5 bg-icy-blue-400 rounded-full flex-shrink-0" />
                         <span className="text-sm font-light text-foreground/70">
                           {achievement}
                         </span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,5 +1,12 @@
 
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 const Publications = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   const publications = [
     {
       title: "Advancing Fake News Detection through Transformer-based Language Models",
@@ -27,24 +34,55 @@ const Publications = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section id="publications" className="py-20 px-6 bg-charcoal-900/30">
+    <section ref={ref} id="publications" className="py-20 px-6 bg-charcoal-900/30">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
             Publications & <span className="gradient-text">Research</span>
           </h2>
           <p className="text-xl font-light text-foreground/70 max-w-2xl mx-auto">
             Contributions to academic research in AI, NLP, and human-computer interaction
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-6">
+        <motion.div 
+          className="space-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {publications.map((pub, index) => (
-            <div
+            <motion.div
               key={index}
               className="glass-card p-8 rounded-lg hover:bg-white/10 transition-all duration-300 group"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              variants={itemVariants}
+              whileHover={{ y: -5, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="flex items-start justify-between mb-4">
                 <span className="text-sm font-medium text-lavender-400 px-3 py-1 bg-lavender-400/10 rounded-full">
@@ -66,9 +104,9 @@ const Publications = () => {
               <p className="text-foreground/60 font-light italic">
                 {pub.venue}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
