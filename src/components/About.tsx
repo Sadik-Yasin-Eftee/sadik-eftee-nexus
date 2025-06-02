@@ -30,10 +30,10 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                I'm a Software Engineering graduate from the Islamic University of Technology (IUT), 
-                passionate about creating AI systems that genuinely serve humanity. My research focuses 
-                on Large Language Models, Natural Language Processing, and the intersection of 
-                machine learning with human-computer interaction.
+                I'm a Software Engineering graduate from the Islamic University of Technology (IUT) 
+                with a passion for building intelligent systems that serve humanity. My research spans 
+                Natural Language Processing, Human-Computer Interaction, Artificial Intelligence, 
+                Machine Learning, Robotics, and Software Engineering.
               </motion.p>
               
               <motion.p
@@ -41,10 +41,10 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                Currently working as a Product Management Intern at ShopUp, I've gained experience in 
-                ML engineering roles at both ShopUp and Grameen Communications. I bridge the gap between 
-                cutting-edge research and real-world applications that scale, focusing on logistics 
-                optimization and AI-driven solutions.
+                Currently working as a Product Management Intern at ShopUp, I've gained valuable 
+                experience in ML engineering at Grameen Communications. I bridge the gap between 
+                cutting-edge research and real-world applications, focusing on logistics optimization, 
+                AI-driven solutions, and educational technology automation.
               </motion.p>
 
               <motion.p
@@ -52,10 +52,10 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
               >
-                My ultimate vision? Building AI companions like Baymax and Jarvis — systems that 
-                don't just process data, but truly understand and enhance human potential. 
-                I believe in ethical AI development that prioritizes transparency, fairness, 
-                and human agency.
+                My research work includes developing few-shot learning models for app review analysis, 
+                fake news detection systems, and exploring AI's role in education. I believe in ethical 
+                AI development that prioritizes transparency, fairness, and human agency in creating 
+                technology that genuinely enhances human potential.
               </motion.p>
             </div>
 
@@ -72,7 +72,7 @@ const About = () => {
               >
                 <h3 className="font-medium text-icy-blue-400 mb-2">Research Focus</h3>
                 <p className="text-sm font-light text-foreground/70">
-                  LLMs, NLP, Human-Computer Interaction, Few-Shot Learning
+                  NLP, HCI, AI, ML, Robotics, Software Engineering
                 </p>
               </motion.div>
               <motion.div 

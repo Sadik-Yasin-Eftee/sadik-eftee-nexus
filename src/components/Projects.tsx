@@ -12,31 +12,35 @@ const Projects = () => {
   const projects = [
     {
       title: "Fake News Detection",
-      description: "Advanced ML model using transformer architectures to identify and classify misinformation with 94% accuracy across multiple languages.",
-      tech: ["Python", "Transformers", "PyTorch", "NLP"],
+      description: "Designed and implemented a machine learning model to classify news articles as real or fake using TF-IDF and frequency analysis techniques with data preprocessing and feature extraction optimization.",
+      tech: ["Python", "Scikit-learn", "TF-IDF"],
       category: "Machine Learning",
-      image: "photo-1461749280684-dccba630e2f6"
+      image: "photo-1461749280684-dccba630e2f6",
+      github: "https://github.com/Sadik-Yasin-Eftee"
     },
     {
-      title: "CourSohelic",
-      description: "Automated Outcome-Based Education system streamlining curriculum management and assessment tracking for academic institutions.",
-      tech: ["React", "Node.js", "PostgreSQL", "AWS"],
-      category: "Full-Stack Development",
-      image: "photo-1581091226825-a6a2a5aee158"
+      title: "CourSohelic: OBE System",
+      description: "Web-based application automating Program Outcome (PO) and Course Outcome (CO) calculations in compliance with Outcome-Based Education framework with multi-panel interfaces for different user roles.",
+      tech: ["Django", "SQLite", "HTML", "CSS"],
+      category: "Web Application",
+      image: "photo-1581091226825-a6a2a5aee158",
+      github: "https://github.com/Sadik-Yasin-Eftee"
     },
     {
-      title: "Andromeda",
-      description: "Modern, responsive club website with dynamic content management, event scheduling, and member portal functionality.",
-      tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-      category: "Web Development",
-      image: "photo-1498050108023-c5249f4df085"
+      title: "Andromeda: IUT Astronomy Club",
+      description: "Comprehensive website for IUT Astronomy Club facilitating real-time astronomy news sharing, community engagement, marketplace for accessories, and knowledge testing quizzing system.",
+      tech: ["Django", "SQLite", "HTML", "CSS"],
+      category: "Web Application",
+      image: "photo-1498050108023-c5249f4df085",
+      github: "https://github.com/Sadik-Yasin-Eftee"
     },
     {
-      title: "AI Tic Tac Toe",
-      description: "Intelligent game implementation featuring minimax algorithm with alpha-beta pruning and adaptive difficulty levels.",
-      tech: ["JavaScript", "AI Algorithms", "Game Theory"],
-      category: "AI & Games",
-      image: "photo-1485827404703-89b55fcc595e"
+      title: "Tic Tac Toe with AI",
+      description: "Game application featuring AI functionality for Random and Defensive gameplay modes with intuitive user interface and three theme options: Classic, Forest, and High Contrast.",
+      tech: ["Java", "JavaFX"],
+      category: "Game Application",
+      image: "photo-1485827404703-89b55fcc595e",
+      github: "https://github.com/Sadik-Yasin-Eftee"
     }
   ];
 
@@ -69,10 +73,10 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
-            Featured <span className="gradient-text">Projects</span>
+            Technical <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl font-light text-foreground/70 max-w-2xl mx-auto">
-            A collection of projects spanning machine learning, web development, and AI research
+            A collection of projects spanning machine learning, web development, and application design
           </p>
         </motion.div>
 
@@ -103,9 +107,15 @@ const Projects = () => {
                   <span className="text-sm font-medium text-icy-blue-400 px-3 py-1 bg-icy-blue-400/10 rounded-full">
                     {project.category}
                   </span>
-                  <Button variant="ghost" size="icon" className="opacity-70 hover:opacity-100">
-                    <Github size={20} />
-                  </Button>
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="ghost" size="icon" className="opacity-70 hover:opacity-100">
+                      <Github size={20} />
+                    </Button>
+                  </a>
                 </div>
 
                 <h3 className="text-2xl font-medium group-hover:text-icy-blue-400 transition-colors">

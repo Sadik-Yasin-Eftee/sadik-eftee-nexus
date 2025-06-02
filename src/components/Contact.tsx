@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -10,6 +10,13 @@ import { useRef } from "react";
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  const technologies = [
+    "Python", "C/C++", "SQL", "Java", "JavaScript", "NumPy", "Pandas", 
+    "Matplotlib", "Scikit-learn", "MongoDB", "SQLite", "HTML", "CSS", 
+    "Express", "Node.js", "Django", "Git", "GitHub", "JMeter", "Selenium", 
+    "LaTeX", "Metabase", "Jira"
+  ];
 
   return (
     <section ref={ref} id="contact" className="py-20 px-6 bg-charcoal-900/30">
@@ -89,7 +96,27 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-foreground/70 font-light">sadik.eftee@gmail.com</p>
+                    <p className="text-foreground/70 font-light">sadikyasineftee@gmail.com</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-background" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Phone</p>
+                    <p className="text-foreground/70 font-light">(+880) 1913-718717</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-background" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Location</p>
+                    <p className="text-foreground/70 font-light">Dhaka - 1229, Bangladesh</p>
                   </div>
                 </div>
 
@@ -99,7 +126,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">GitHub</p>
-                    <p className="text-foreground/70 font-light">github.com/sadikeftee</p>
+                    <p className="text-foreground/70 font-light">github.com/Sadik-Yasin-Eftee</p>
                   </div>
                 </div>
 
@@ -109,7 +136,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">LinkedIn</p>
-                    <p className="text-foreground/70 font-light">linkedin.com/in/sadikeftee</p>
+                    <p className="text-foreground/70 font-light">linkedin.com/in/sadik-yasin</p>
                   </div>
                 </div>
               </div>
@@ -120,14 +147,14 @@ const Contact = () => {
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <h3 className="text-xl font-medium mb-4">Research Interests</h3>
+              <h3 className="text-xl font-medium mb-4">Technical Skills</h3>
               <div className="flex flex-wrap gap-2">
-                {["Large Language Models", "NLP", "HCI", "Ethical AI", "Product Management", "Machine Learning"].map((interest) => (
+                {technologies.map((tech) => (
                   <span
-                    key={interest}
+                    key={tech}
                     className="px-3 py-1 bg-gradient-to-r from-icy-blue-400/20 to-lavender-400/20 rounded-full text-sm font-light border border-white/10"
                   >
-                    {interest}
+                    {tech}
                   </span>
                 ))}
               </div>

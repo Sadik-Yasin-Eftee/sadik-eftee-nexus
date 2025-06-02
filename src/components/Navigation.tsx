@@ -18,6 +18,7 @@ const Navigation = () => {
 
   const navItems = [
     { href: "#about", label: "About" },
+    { href: "#education", label: "Education" },
     { href: "#projects", label: "Projects" },
     { href: "#publications", label: "Research" },
     { href: "#experience", label: "Experience" },
@@ -54,7 +55,7 @@ const Navigation = () => {
 
             <div className="hidden md:flex items-center space-x-4">
               <a
-                href="https://github.com"
+                href="https://github.com/Sadik-Yasin-Eftee"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
@@ -62,7 +63,7 @@ const Navigation = () => {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/sadik-yasin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
@@ -70,7 +71,7 @@ const Navigation = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:contact@sadik.dev"
+                href="mailto:sadikyasineftee@gmail.com"
                 className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
               >
                 <Mail size={20} />
@@ -110,13 +111,13 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="flex space-x-6 pt-8">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Sadik-Yasin-Eftee" target="_blank" rel="noopener noreferrer">
                   <Github size={24} className="text-foreground/60 hover:text-icy-blue-400 transition-colors" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/sadik-yasin" target="_blank" rel="noopener noreferrer">
                   <Linkedin size={24} className="text-foreground/60 hover:text-icy-blue-400 transition-colors" />
                 </a>
-                <a href="mailto:contact@sadik.dev">
+                <a href="mailto:sadikyasineftee@gmail.com">
                   <Mail size={24} className="text-foreground/60 hover:text-icy-blue-400 transition-colors" />
                 </a>
               </div>
