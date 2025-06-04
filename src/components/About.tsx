@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Research, Award } from "lucide-react";
+import { GraduationCap, Search, Award } from "lucide-react";
 
 const About = () => {
   const ref = useRef(null);
@@ -15,7 +15,7 @@ const About = () => {
       description: "Bachelor's in Software Engineering with CGPA 3.63/4.00 from IUT"
     },
     {
-      icon: Research,
+      icon: Search,
       title: "Research Publications",
       description: "Published work in NLP and app review analysis using few-shot learning"
     },
@@ -123,7 +123,6 @@ const About = () => {
                 key={index}
                 className="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300"
                 whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.6, delay: 0.4 + (index * 0.2) }}
