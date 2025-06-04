@@ -1,45 +1,58 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-icy-blue-900/20 via-transparent to-lavender-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-icy-blue-900/10 via-transparent to-lavender-900/10" />
       
       <motion.div 
-        className="max-w-4xl mx-auto text-center space-y-8 relative z-10"
+        className="max-w-5xl mx-auto text-center space-y-8 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="space-y-4">
+        <div className="space-y-6">
           <motion.h1 
-            className="text-5xl md:text-7xl font-light tracking-tight"
+            className="text-4xl md:text-6xl font-light tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="gradient-text">Sadik Yasin Eftee</span>
           </motion.h1>
-          <motion.h2 
-            className="text-xl md:text-2xl font-light text-foreground/80 tracking-wide"
+          
+          <motion.div 
+            className="space-y-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Engineer. Researcher. Builder of Intelligent Systems.
-          </motion.h2>
-          <motion.p 
-            className="text-lg md:text-xl text-foreground/60 max-w-2xl mx-auto font-light leading-relaxed"
+            <h2 className="text-xl md:text-2xl font-light text-foreground/90 tracking-wide">
+              Software Engineering Graduate & Research Scholar
+            </h2>
+            <p className="text-lg text-foreground/70 font-light">
+              Islamic University of Technology (IUT) • Bangladesh
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            className="max-w-3xl mx-auto space-y-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Building the future of human-computer interaction through machine learning, 
-            natural language processing, and ethical AI innovation.
-          </motion.p>
+            <p className="text-lg text-foreground/80 font-light leading-relaxed">
+              Pursuing advanced research in <span className="text-icy-blue-400 font-medium">Natural Language Processing</span>, 
+              <span className="text-lavender-400 font-medium"> Human-Computer Interaction</span>, and 
+              <span className="text-icy-blue-400 font-medium"> Artificial Intelligence</span>
+            </p>
+            <p className="text-base text-foreground/70 font-light">
+              Published researcher with industry experience in machine learning engineering and product management
+            </p>
+          </motion.div>
         </div>
 
         <motion.div 
@@ -53,10 +66,11 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Button
-              className="neumorphic-btn px-8 py-6 text-lg font-light tracking-wide"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="neumorphic-btn px-8 py-6 text-lg font-light tracking-wide group"
+              onClick={() => document.getElementById('publications')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              🚀 Explore Projects
+              <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
+              Download CV
             </Button>
           </motion.div>
           <motion.div
@@ -66,15 +80,17 @@ const Hero = () => {
             <Button
               variant="outline"
               className="px-8 py-6 text-lg font-light tracking-wide border-icy-blue-400/30 hover:border-icy-blue-400/60 hover:bg-icy-blue-400/10"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              📄 Download CV
+              <Mail className="w-5 h-5 mr-2" />
+              Contact Me
             </Button>
           </motion.div>
         </motion.div>
       </motion.div>
 
       <motion.div 
-        className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-24 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
