@@ -102,7 +102,7 @@ const Hero = () => {
           >
             <Avatar className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 ring-2 sm:ring-4 ring-icy-blue-400/20 ring-offset-2 sm:ring-offset-4 ring-offset-background">
               <AvatarImage 
-                src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face" 
+                src="/lovable-uploads/3dad034d-aea3-42eb-b907-76a133a18fb1.png" 
                 alt="Sadik Yasin Eftee"
                 className="object-cover"
               />
