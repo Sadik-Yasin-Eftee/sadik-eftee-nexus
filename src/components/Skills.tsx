@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -77,6 +76,7 @@ const Skills = () => {
         { name: "JMeter", icon: TestTube },
         { name: "Selenium", icon: TestTube },
         { name: "Jira", icon: Layers },
+        { name: "Metabase", icon: BarChart3 },
         { name: "LaTeX", icon: FileText }
       ]
     }
