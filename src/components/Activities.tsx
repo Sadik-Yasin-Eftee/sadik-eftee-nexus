@@ -71,11 +71,11 @@ const Activities = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="space-y-12">
           {/* Extracurricular Activities */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="flex items-center space-x-3 mb-8">
@@ -84,7 +84,7 @@ const Activities = () => {
               </div>
               <h3 className="text-2xl font-medium text-icy-blue-400">Extracurricular Activities</h3>
             </div>
-            <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {activities.map((activity, index) => (
                 <motion.div 
                   key={index} 
@@ -104,8 +104,8 @@ const Activities = () => {
 
           {/* Achievements */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="flex items-center space-x-3 mb-8">
@@ -114,7 +114,7 @@ const Activities = () => {
               </div>
               <h3 className="text-2xl font-medium text-icy-blue-400">Achievements</h3>
             </div>
-            <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {achievements.map((achievement, index) => (
                 <motion.div 
                   key={index} 

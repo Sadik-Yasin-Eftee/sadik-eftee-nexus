@@ -11,13 +11,6 @@ const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  const technologies = [
-    "Python", "C/C++", "SQL", "Java", "JavaScript", "NumPy", "Pandas", 
-    "Matplotlib", "Scikit-learn", "MongoDB", "SQLite", "HTML", "CSS", 
-    "Express", "Node.js", "Django", "Git", "GitHub", "JMeter", "Selenium", 
-    "LaTeX", "Metabase", "Jira"
-  ];
-
   return (
     <section ref={ref} id="contact" className="py-20 px-6 bg-charcoal-900/30">
       <div className="max-w-6xl mx-auto">
@@ -139,24 +132,6 @@ const Contact = () => {
                     <p className="text-foreground/70 font-light">linkedin.com/in/sadik-yasin</p>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="glass-card p-8 rounded-2xl"
-              whileHover={{ y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <h3 className="text-xl font-medium mb-4">Technical Skills</h3>
-              <div className="flex flex-wrap gap-2">
-                {technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 bg-gradient-to-r from-icy-blue-400/20 to-lavender-400/20 rounded-full text-sm font-light border border-white/10"
-                  >
-                    {tech}
-                  </span>
-                ))}
               </div>
             </motion.div>
           </motion.div>
