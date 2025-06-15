@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { motion } from "framer-motion";
@@ -35,7 +36,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <h2 className="text-lg sm:text-xl md:text-2xl font-light text-foreground/90 tracking-wide">
-                  Product Manager and Software Engineer
+                  Product Manager & Software Engineer
                 </h2>
                 <p className="text-base sm:text-lg text-foreground/70 font-light">
                   Machine Learning • Web Development • Product Management
@@ -100,7 +101,7 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <div className="w-48 h-60 sm:w-56 sm:h-70 md:w-64 md:h-80 lg:w-72 lg:h-90 xl:w-80 xl:h-96 rounded-[2rem] overflow-hidden">
+            <div className="w-48 h-60 sm:w-56 sm:h-70 md:w-64 md:h-80 lg:w-72 lg:h-90 xl:w-80 xl:h-96 rounded-full overflow-hidden" style={{ borderRadius: '50%' }}>
               <img 
                 src="/lovable-uploads/3dad034d-aea3-42eb-b907-76a133a18fb1.png" 
                 alt="Sadik Yasin Eftee"
@@ -132,3 +133,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
