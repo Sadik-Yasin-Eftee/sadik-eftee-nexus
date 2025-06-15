@@ -12,7 +12,9 @@ import {
   Cpu,
   BarChart3,
   FileCode,
-  Layers
+  Layers,
+  TestTube,
+  FileText
 } from "lucide-react";
 
 const Skills = () => {
@@ -25,59 +27,56 @@ const Skills = () => {
       icon: Code2,
       skills: [
         { name: "Python", icon: FileCode },
-        { name: "JavaScript", icon: Code2 },
-        { name: "Java", icon: Cpu },
-        { name: "TypeScript", icon: FileCode }
-      ]
-    },
-    {
-      title: "Frontend Development",
-      icon: Globe,
-      skills: [
-        { name: "React", icon: Layers },
-        { name: "HTML/CSS", icon: Globe },
-        { name: "Tailwind CSS", icon: Globe },
-        { name: "Responsive Design", icon: Globe }
-      ]
-    },
-    {
-      title: "Backend Development",
-      icon: Server,
-      skills: [
-        { name: "Django", icon: Server },
-        { name: "Node.js", icon: Server },
-        { name: "REST APIs", icon: Server },
-        { name: "FastAPI", icon: Server }
-      ]
-    },
-    {
-      title: "Database & Cloud",
-      icon: Database,
-      skills: [
+        { name: "C/C++", icon: Code2 },
         { name: "SQL", icon: Database },
-        { name: "MongoDB", icon: Database },
-        { name: "PostgreSQL", icon: Database },
-        { name: "Firebase", icon: Database }
+        { name: "Java", icon: Cpu },
+        { name: "JavaScript", icon: Code2 }
       ]
     },
     {
-      title: "Machine Learning & AI",
+      title: "ML Framework",
       icon: Brain,
       skills: [
-        { name: "TensorFlow", icon: Brain },
-        { name: "Scikit-learn", icon: Brain },
-        { name: "NLP", icon: Brain },
-        { name: "Data Analysis", icon: BarChart3 }
+        { name: "Numpy", icon: Brain },
+        { name: "Pandas", icon: BarChart3 },
+        { name: "Matplotlib", icon: BarChart3 },
+        { name: "Scikit-learn", icon: Brain }
       ]
     },
     {
-      title: "Tools & Technologies",
+      title: "Database",
+      icon: Database,
+      skills: [
+        { name: "MongoDB", icon: Database },
+        { name: "SQLite", icon: Database }
+      ]
+    },
+    {
+      title: "Web Development",
+      icon: Globe,
+      skills: [
+        { name: "HTML", icon: Globe },
+        { name: "CSS", icon: Globe },
+        { name: "Express", icon: Server },
+        { name: "Node.js", icon: Server },
+        { name: "Django", icon: Server }
+      ]
+    },
+    {
+      title: "Version Control",
       icon: GitBranch,
       skills: [
         { name: "Git", icon: GitBranch },
-        { name: "Docker", icon: Layers },
-        { name: "Linux", icon: Server },
-        { name: "VS Code", icon: Code2 }
+        { name: "GitHub", icon: GitBranch }
+      ]
+    },
+    {
+      title: "Testing & Scripting",
+      icon: TestTube,
+      skills: [
+        { name: "JMeter", icon: TestTube },
+        { name: "Selenium", icon: TestTube },
+        { name: "LaTeX", icon: FileText }
       ]
     }
   ];
