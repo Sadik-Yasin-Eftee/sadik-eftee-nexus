@@ -31,10 +31,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <h2 className="text-xl md:text-2xl font-light text-foreground/90 tracking-wide">
-              Software Engineering Graduate & Research Scholar
+              Software Engineer & Full-Stack Developer
             </h2>
             <p className="text-lg text-foreground/70 font-light">
-              Islamic University of Technology (IUT) • Bangladesh
+              Machine Learning • Web Development • Product Management
             </p>
           </motion.div>
           
@@ -45,12 +45,12 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <p className="text-lg text-foreground/80 font-light leading-relaxed">
-              Pursuing advanced research in <span className="text-icy-blue-400 font-medium">Natural Language Processing</span>, 
-              <span className="text-lavender-400 font-medium"> Human-Computer Interaction</span>, and 
-              <span className="text-icy-blue-400 font-medium"> Artificial Intelligence</span>
+              Experienced in <span className="text-icy-blue-400 font-medium">Machine Learning Engineering</span>, 
+              <span className="text-lavender-400 font-medium"> Full-Stack Development</span>, and 
+              <span className="text-icy-blue-400 font-medium"> Product Management</span>
             </p>
             <p className="text-base text-foreground/70 font-light">
-              Published researcher with industry experience in machine learning engineering and product management
+              Building scalable solutions from ideation to deployment with expertise in Python, JavaScript, and modern frameworks
             </p>
           </motion.div>
         </div>
@@ -67,10 +67,10 @@ const Hero = () => {
           >
             <Button
               className="neumorphic-btn px-8 py-6 text-lg font-light tracking-wide group"
-              onClick={() => document.getElementById('publications')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Download className="w-5 h-5 mr-2 group-hover:animate-bounce" />
-              Download CV
+              Download Resume
             </Button>
           </motion.div>
           <motion.div
@@ -83,7 +83,7 @@ const Hero = () => {
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mail className="w-5 h-5 mr-2" />
-              Contact Me
+              Get In Touch
             </Button>
           </motion.div>
         </motion.div>

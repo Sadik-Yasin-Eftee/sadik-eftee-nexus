@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Search, Award } from "lucide-react";
+import { Code, Zap, Settings } from "lucide-react";
 
 const About = () => {
   const ref = useRef(null);
@@ -10,20 +10,25 @@ const About = () => {
 
   const highlights = [
     {
-      icon: GraduationCap,
-      title: "Academic Excellence",
-      description: "Bachelor's in Software Engineering with CGPA 3.63/4.00 from IUT"
+      icon: Code,
+      title: "Full-Stack Development",
+      description: "Experienced in building scalable web applications using modern frameworks and technologies"
     },
     {
-      icon: Search,
-      title: "Research Publications",
-      description: "Published work in NLP and app review analysis using few-shot learning"
+      icon: Zap,
+      title: "Machine Learning Engineering",
+      description: "Specialized in NLP, chatbot development, and credit scoring systems for fintech applications"
     },
     {
-      icon: Award,
-      title: "Industry Experience",
-      description: "ML Engineering at Grameen Communications & Product Management at ShopUp"
+      icon: Settings,
+      title: "Product Management",
+      description: "Currently contributing to operational optimization and data-driven decision making at ShopUp"
     }
+  ];
+
+  const technologies = [
+    "Python", "JavaScript", "Java", "React", "Django", "Node.js", 
+    "Machine Learning", "TensorFlow", "SQL", "MongoDB", "Git"
   ];
 
   return (
@@ -36,7 +41,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
-            Research <span className="gradient-text">Profile</span>
+            About <span className="gradient-text">Me</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-icy-blue-400 to-lavender-400 rounded-full mx-auto" />
         </motion.div>
@@ -54,12 +59,11 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                I am a dedicated Software Engineering graduate from the Islamic University of Technology (IUT) 
-                with a strong foundation in research and practical application. My academic and professional 
-                journey spans <span className="text-icy-blue-400 font-medium">Natural Language Processing</span>, 
-                <span className="text-lavender-400 font-medium"> Human-Computer Interaction</span>, 
-                <span className="text-icy-blue-400 font-medium"> Artificial Intelligence</span>, and 
-                <span className="text-lavender-400 font-medium"> Machine Learning</span>.
+                I'm a passionate <span className="text-icy-blue-400 font-medium">Software Engineer</span> with 
+                hands-on experience in building scalable applications and machine learning solutions. 
+                My journey spans from developing intelligent <span className="text-lavender-400 font-medium">chatbots</span> 
+                and <span className="text-icy-blue-400 font-medium">credit scoring systems</span> to creating 
+                comprehensive web applications that solve real-world problems.
               </motion.p>
               
               <motion.p
@@ -67,10 +71,10 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
               >
-                My research experience includes developing few-shot learning models for app review analysis, 
-                exploring AI's role in education, and conducting longitudinal studies on open-source JavaScript 
-                libraries. I have published work on multi-document summarization of Bangla news articles and 
-                app problem extraction using advanced NLP techniques.
+                Currently serving as a <span className="text-lavender-400 font-medium">Product Management Intern</span> at 
+                ShopUp, I focus on optimizing hub operations and implementing data-driven solutions that enhance 
+                operational efficiency. My technical expertise extends across the full development stack, 
+                from backend systems to user-facing applications.
               </motion.p>
 
               <motion.p
@@ -78,10 +82,10 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
               >
-                Through my industrial experience at Grameen Communications and ShopUp, I have gained valuable 
-                insights into real-world applications of machine learning in fintech and logistics optimization. 
-                I am passionate about pursuing advanced research that bridges academic excellence with practical 
-                impact, particularly in developing ethical AI systems that enhance human capabilities.
+                I thrive in collaborative environments where I can leverage my technical skills to build 
+                innovative solutions that make a meaningful impact. Whether it's developing machine learning 
+                models for fintech applications or creating intuitive web interfaces, I'm driven by the 
+                challenge of turning complex problems into elegant, scalable solutions.
               </motion.p>
             </div>
 
@@ -91,21 +95,14 @@ const About = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              <h3 className="text-xl font-medium text-icy-blue-400 mb-4">Research Interests</h3>
+              <h3 className="text-xl font-medium text-icy-blue-400 mb-4">Technical Skills</h3>
               <div className="flex flex-wrap gap-3">
-                {[
-                  "Natural Language Processing",
-                  "Human-Computer Interaction", 
-                  "Artificial Intelligence",
-                  "Machine Learning",
-                  "Robotics",
-                  "Software Engineering"
-                ].map((interest, index) => (
+                {technologies.map((tech, index) => (
                   <span 
                     key={index}
                     className="px-4 py-2 bg-icy-blue-400/10 text-icy-blue-400 rounded-full text-sm font-light border border-icy-blue-400/20"
                   >
-                    {interest}
+                    {tech}
                   </span>
                 ))}
               </div>

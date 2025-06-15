@@ -18,10 +18,9 @@ const Navigation = () => {
 
   const navItems = [
     { href: "#about", label: "About" },
-    { href: "#education", label: "Education" },
-    { href: "#publications", label: "Publications" },
     { href: "#experience", label: "Experience" },
     { href: "#projects", label: "Projects" },
+    { href: "#education", label: "Education" },
     { href: "#contact", label: "Contact" },
   ];
 

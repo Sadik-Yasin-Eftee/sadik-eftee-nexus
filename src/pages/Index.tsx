@@ -2,10 +2,9 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Education from "@/components/Education";
-import Publications from "@/components/Publications";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 
 const Index = () => {
@@ -15,10 +14,9 @@ const Index = () => {
       <main>
         <Hero />
         <About />
-        <Education />
-        <Publications />
         <Experience />
         <Projects />
+        <Education />
         <Contact />
       </main>
     </div>
