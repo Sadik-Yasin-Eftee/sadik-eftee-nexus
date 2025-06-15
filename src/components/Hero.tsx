@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Hero = () => {
   return (
@@ -14,6 +15,24 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
+        <motion.div 
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <Avatar className="w-32 h-32 md:w-40 md:h-40 ring-4 ring-icy-blue-400/20 ring-offset-4 ring-offset-background">
+            <AvatarImage 
+              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face" 
+              alt="Sadik Yasin Eftee"
+              className="object-cover"
+            />
+            <AvatarFallback className="text-2xl md:text-3xl font-medium bg-gradient-to-br from-icy-blue-400/20 to-lavender-400/20 text-icy-blue-400">
+              SYE
+            </AvatarFallback>
+          </Avatar>
+        </motion.div>
+
         <div className="space-y-6">
           <motion.h1 
             className="text-4xl md:text-6xl font-light tracking-tight"
