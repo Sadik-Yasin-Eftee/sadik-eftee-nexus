@@ -34,52 +34,6 @@ const Experience = () => {
     }
   ];
 
-  const activities = [
-    {
-      organization: "IUT Computer Society (IUTCS)",
-      role: "Junior Web Developer",
-      period: "2020 - 2021"
-    },
-    {
-      organization: "IUT Debating Society (IUTDS)",
-      role: "Junior Member",
-      period: "2020"
-    }
-  ];
-
-  const achievements = [
-    {
-      title: "Robi Datathon 3.0",
-      achievement: "193rd Position (out of 3,500+ teams)",
-      location: "Dhaka, Bangladesh",
-      year: "2024"
-    },
-    {
-      title: "Orange Corners Ideation Challenge",
-      achievement: "Stage 2",
-      location: "Dhaka, Bangladesh",
-      year: "2023"
-    },
-    {
-      title: "IUT Novice Debate Competition",
-      achievement: "Semifinalist",
-      location: "Gazipur, Bangladesh",
-      year: "2020"
-    },
-    {
-      title: "Rajuk College Inter-Shift Cricket Tournament",
-      achievement: "Runner-Up (Senior Level)",
-      location: "Dhaka, Bangladesh",
-      year: "2018"
-    },
-    {
-      title: "Rajuk College Inter-Shift Cricket Tournament",
-      achievement: "Champion (Junior Level)",
-      location: "Dhaka, Bangladesh",
-      year: "2014"
-    }
-  ];
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -117,7 +71,7 @@ const Experience = () => {
         </motion.div>
 
         {/* Industrial Experience */}
-        <div className="relative mb-16">
+        <div className="relative">
           <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-icy-blue-400 to-lavender-400 hidden md:block" />
 
           <motion.div 
@@ -182,47 +136,6 @@ const Experience = () => {
                 </motion.div>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Extracurricular Activities */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <h3 className="text-2xl font-medium mb-8 text-icy-blue-400">Extracurricular Activities</h3>
-            <div className="space-y-4">
-              {activities.map((activity, index) => (
-                <div key={index} className="glass-card p-6 rounded-lg">
-                  <h4 className="font-medium text-lavender-400 mb-1">{activity.organization}</h4>
-                  <p className="text-foreground/70 font-light text-sm mb-1">{activity.role}</p>
-                  <p className="text-foreground/60 font-light text-xs">{activity.period}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Achievements */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <h3 className="text-2xl font-medium mb-8 text-icy-blue-400">Achievements</h3>
-            <div className="space-y-4">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="glass-card p-6 rounded-lg">
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-medium text-lavender-400">{achievement.title}</h4>
-                    <span className="text-xs text-foreground/60 font-light">{achievement.year}</span>
-                  </div>
-                  <p className="text-foreground/70 font-light text-sm mb-1">{achievement.achievement}</p>
-                  <p className="text-foreground/60 font-light text-xs">{achievement.location}</p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

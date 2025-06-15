@@ -26,11 +26,6 @@ const About = () => {
     }
   ];
 
-  const technologies = [
-    "Python", "JavaScript", "Java", "React", "Django", "Node.js", 
-    "Machine Learning", "TensorFlow", "SQL", "MongoDB", "Git"
-  ];
-
   return (
     <section ref={ref} id="about" className="py-20 px-6 bg-charcoal-900/20">
       <div className="max-w-6xl mx-auto">
@@ -88,25 +83,6 @@ const About = () => {
                 challenge of turning complex problems into elegant, scalable solutions.
               </motion.p>
             </div>
-
-            <motion.div 
-              className="pt-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-            >
-              <h3 className="text-xl font-medium text-icy-blue-400 mb-4">Technical Skills</h3>
-              <div className="flex flex-wrap gap-3">
-                {technologies.map((tech, index) => (
-                  <span 
-                    key={index}
-                    className="px-4 py-2 bg-icy-blue-400/10 text-icy-blue-400 rounded-full text-sm font-light border border-icy-blue-400/20"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div 
