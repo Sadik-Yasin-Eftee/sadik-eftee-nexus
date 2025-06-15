@@ -76,6 +76,7 @@ const Skills = () => {
       skills: [
         { name: "JMeter", icon: TestTube },
         { name: "Selenium", icon: TestTube },
+        { name: "Jira", icon: Layers },
         { name: "LaTeX", icon: FileText }
       ]
     }
