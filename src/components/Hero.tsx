@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { motion } from "framer-motion";
@@ -100,16 +99,13 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <Avatar className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 ring-2 sm:ring-4 ring-icy-blue-400/20 ring-offset-2 sm:ring-offset-4 ring-offset-background">
-              <AvatarImage 
+            <div className="w-48 h-60 sm:w-56 sm:h-70 md:w-64 md:h-80 lg:w-72 lg:h-90 xl:w-80 xl:h-96 rounded-[2rem] ring-2 sm:ring-4 ring-icy-blue-400/20 ring-offset-2 sm:ring-offset-4 ring-offset-background overflow-hidden bg-gradient-to-br from-icy-blue-400/20 to-lavender-400/20">
+              <img 
                 src="/lovable-uploads/3dad034d-aea3-42eb-b907-76a133a18fb1.png" 
                 alt="Sadik Yasin Eftee"
-                className="object-cover"
+                className="w-full h-full object-cover"
               />
-              <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium bg-gradient-to-br from-icy-blue-400/20 to-lavender-400/20 text-icy-blue-400">
-                SYE
-              </AvatarFallback>
-            </Avatar>
+            </div>
           </motion.div>
         </div>
       </motion.div>
