@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, Github, Linkedin, Mail, X } from "lucide-react";
@@ -19,6 +18,7 @@ const Navigation = () => {
   const navItems = [
     { href: "#about", label: "About" },
     { href: "#experience", label: "Experience" },
+    { href: "#skills", label: "Technical Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#education", label: "Education" },
     { href: "#contact", label: "Contact" },
