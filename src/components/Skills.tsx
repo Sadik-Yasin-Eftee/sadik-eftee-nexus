@@ -13,7 +13,8 @@ import {
   FileCode,
   Layers,
   TestTube,
-  FileText
+  FileText,
+  Settings
 } from "lucide-react";
 
 const Skills = () => {
@@ -22,7 +23,7 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Programming Languages",
+      title: "Programming",
       icon: Code2,
       skills: [
         { name: "Python", icon: FileCode },
@@ -33,7 +34,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "ML Framework",
+      title: "ML Frameworks",
       icon: Brain,
       skills: [
         { name: "Numpy", icon: Brain },
@@ -51,7 +52,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "Web Development",
+      title: "Web",
       icon: Globe,
       skills: [
         { name: "HTML", icon: Globe },
@@ -70,14 +71,26 @@ const Skills = () => {
       ]
     },
     {
-      title: "Testing & Scripting",
+      title: "Testing",
       icon: TestTube,
       skills: [
         { name: "JMeter", icon: TestTube },
-        { name: "Selenium", icon: TestTube },
-        { name: "Jira", icon: Layers },
-        { name: "Metabase", icon: BarChart3 },
+        { name: "Selenium", icon: TestTube }
+      ]
+    },
+    {
+      title: "Scripting",
+      icon: FileText,
+      skills: [
         { name: "LaTeX", icon: FileText }
+      ]
+    },
+    {
+      title: "Tools",
+      icon: Settings,
+      skills: [
+        { name: "Jira", icon: Layers },
+        { name: "Metabase", icon: BarChart3 }
       ]
     }
   ];
@@ -119,7 +132,7 @@ const Skills = () => {
         </motion.div>
 
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
