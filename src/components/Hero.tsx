@@ -1,8 +1,18 @@
+
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail } from "lucide-react";
 
 const Hero = () => {
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Sadik_Yasin_Eftee_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-icy-blue-900/10 via-transparent to-lavender-900/10" />
@@ -82,11 +92,7 @@ const Hero = () => {
               >
                 <Button
                   className="neumorphic-btn px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-light tracking-wide group w-full sm:w-auto"
-                  onClick={() =>
-                    document
-                      .getElementById("projects")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
+                  onClick={handleDownloadResume}
                 >
                   <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-bounce" />
                   Download Resume
