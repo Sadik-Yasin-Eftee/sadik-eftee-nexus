@@ -1,13 +1,12 @@
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail } from "lucide-react";
 
 const Hero = () => {
   const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Sadik_Yasin_Eftee_Resume.pdf';
+    const link = document.createElement("a");
+    link.href = "/doc/Sadik_Yasin_Eftee_Resume.pdf";
+    link.download = "Sadik_Yasin_Eftee_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
