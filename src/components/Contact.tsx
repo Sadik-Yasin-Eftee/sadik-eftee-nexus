@@ -1,10 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
 
 const Contact = () => {
@@ -14,7 +12,7 @@ const Contact = () => {
   return (
     <section ref={ref} id="contact" className="py-20 px-6 bg-charcoal-900/30">
       <div className="max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -24,14 +22,14 @@ const Contact = () => {
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-xl font-light text-foreground/70 max-w-2xl mx-auto">
-            Interested in collaboration, research opportunities, or just want to chat about AI? 
-            I'd love to hear from you.
+            Interested in collaboration, research opportunities, or just want to
+            chat about AI? I'd love to hear from you.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <motion.div 
+          <motion.div
             className="glass-card p-8 rounded-2xl"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
@@ -70,13 +68,13 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Information */}
-          <motion.div 
+          <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            <motion.div 
+            <motion.div
               className="glass-card p-8 rounded-2xl"
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -89,11 +87,13 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-foreground/70 font-light">sadikyasineftee@gmail.com</p>
+                    <p className="text-foreground/70 font-light">
+                      sadikyasineftee@gmail.com
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
+                {/* <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
                     <Phone className="w-6 h-6 text-background" />
                   </div>
@@ -101,7 +101,7 @@ const Contact = () => {
                     <p className="font-medium">Phone</p>
                     <p className="text-foreground/70 font-light">(+880) 1913-718717</p>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
@@ -109,7 +109,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">Location</p>
-                    <p className="text-foreground/70 font-light">Dhaka - 1229, Bangladesh</p>
+                    <p className="text-foreground/70 font-light">
+                      Dhaka - 1229, Bangladesh
+                    </p>
                   </div>
                 </div>
 
@@ -119,7 +121,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">GitHub</p>
-                    <p className="text-foreground/70 font-light">github.com/Sadik-Yasin-Eftee</p>
+                    <p className="text-foreground/70 font-light">
+                      github.com/Sadik-Yasin-Eftee
+                    </p>
                   </div>
                 </div>
 
@@ -129,7 +133,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium">LinkedIn</p>
-                    <p className="text-foreground/70 font-light">linkedin.com/in/sadik-yasin</p>
+                    <p className="text-foreground/70 font-light">
+                      linkedin.com/in/sadik-yasin
+                    </p>
                   </div>
                 </div>
               </div>
