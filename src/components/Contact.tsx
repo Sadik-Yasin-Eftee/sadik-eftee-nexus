@@ -1,150 +1,126 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { motion, useInView } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { profile } from "@/lib/data";
+import { Mail, MapPin, Github, Linkedin, BookOpen, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const Contact = () => {
+const contactLinks = [
+  { icon: Mail, label: "Email", value: "sadikyasineftee@gmail.com", href: "mailto:sadikyasineftee@gmail.com" },
+  { icon: Phone, label: "Phone", value: "+880 1913-718717", href: "tel:+8801913718717" },
+  { icon: MapPin, label: "Location", value: "Dhaka-1229, Bangladesh", href: null },
+  { icon: Github, label: "GitHub", value: "Sadik-Yasin-Eftee", href: "https://github.com/Sadik-Yasin-Eftee" },
+  { icon: Linkedin, label: "LinkedIn", value: "sadik-yasin", href: "https://linkedin.com/in/sadik-yasin" },
+  { icon: BookOpen, label: "Google Scholar", value: "Sadik Yasin Eftee", href: "https://scholar.google.com/citations?user=oZahYhMAAAAJ" },
+];
+
+export default function Contact() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const inView = useInView(ref, { once: true, amount: 0.15 });
 
   return (
-    <section ref={ref} id="contact" className="py-20 px-6 bg-charcoal-900/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="contact" ref={ref} className="py-24 border-t border-border">
+      <div className="max-w-5xl mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
-            Let's <span className="gradient-text">Connect</span>
+          <span className="font-mono-custom text-xs text-primary uppercase tracking-widest mb-3 block">Contact</span>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+            Let's Connect
           </h2>
-          <p className="text-xl font-light text-foreground/70 max-w-2xl mx-auto">
-            Interested in collaboration, research opportunities, or just want to
-            chat about AI? I'd love to hear from you.
+          <p className="text-muted-foreground mt-3 max-w-xl">
+            Interested in research collaboration, internship opportunities, or just want to chat about NLP or AI? I'd love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Form */}
+        <div className="grid lg:grid-cols-2 gap-10">
+          {/* Contact links */}
           <motion.div
-            className="glass-card p-8 rounded-2xl"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-3"
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h3 className="text-2xl font-medium mb-6">Send a Message</h3>
-            <form className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                <Input
-                  placeholder="First Name"
-                  className="bg-charcoal-800/50 border-white/10 focus:border-icy-blue-400/50"
-                />
-                <Input
-                  placeholder="Last Name"
-                  className="bg-charcoal-800/50 border-white/10 focus:border-icy-blue-400/50"
-                />
-              </div>
-              <Input
-                type="email"
-                placeholder="Email Address"
-                className="bg-charcoal-800/50 border-white/10 focus:border-icy-blue-400/50"
-              />
-              <Input
-                placeholder="Subject"
-                className="bg-charcoal-800/50 border-white/10 focus:border-icy-blue-400/50"
-              />
-              <Textarea
-                placeholder="Your message..."
-                rows={6}
-                className="bg-charcoal-800/50 border-white/10 focus:border-icy-blue-400/50 resize-none"
-              />
-              <Button className="neumorphic-btn w-full py-6 text-lg font-light">
-                Send Message
-              </Button>
-            </form>
+            {contactLinks.map((link, i) => (
+              <motion.div
+                key={link.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.15 + i * 0.07 }}
+              >
+                {link.href ? (
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                    className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/40 transition-all group"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <link.icon size={15} className="text-primary" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs text-muted-foreground">{link.label}</div>
+                      <div className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                        {link.value}
+                      </div>
+                    </div>
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border">
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <link.icon size={15} className="text-primary" />
+                    </div>
+                    <div>
+                      <div className="text-xs text-muted-foreground">{link.label}</div>
+                      <div className="text-sm font-medium text-foreground">{link.value}</div>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Quick message prompt */}
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="rounded-2xl bg-card border border-border p-8 flex flex-col justify-between"
+            initial={{ opacity: 0, x: 20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.div
-              className="glass-card p-8 rounded-2xl"
-              whileHover={{ y: -5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <h3 className="text-2xl font-medium mb-6">Get in Touch</h3>
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-background" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Email</p>
-                    <p className="text-foreground/70 font-light">
-                      sadikyasineftee@gmail.com
-                    </p>
-                  </div>
-                </div>
-
-                {/* <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-background" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <p className="text-foreground/70 font-light">(+880) 1913-718717</p>
-                  </div>
-                </div> */}
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-background" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Location</p>
-                    <p className="text-foreground/70 font-light">
-                      Dhaka - 1229, Bangladesh
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
-                    <Github className="w-6 h-6 text-background" />
-                  </div>
-                  <div>
-                    <p className="font-medium">GitHub</p>
-                    <p className="text-foreground/70 font-light">
-                      github.com/Sadik-Yasin-Eftee
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400 to-lavender-400 rounded-lg flex items-center justify-center">
-                    <Linkedin className="w-6 h-6 text-background" />
-                  </div>
-                  <div>
-                    <p className="font-medium">LinkedIn</p>
-                    <p className="text-foreground/70 font-light">
-                      linkedin.com/in/sadik-yasin
-                    </p>
-                  </div>
-                </div>
+            <div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3">Open to Opportunities</h3>
+              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  I'm actively looking for <span className="text-foreground font-medium">research collaborations</span> in NLP, HCI, or AI.
+                </p>
+                <p>
+                  Also open to <span className="text-foreground font-medium">full-time roles</span> in product management or machine learning engineering.
+                </p>
+                <p>
+                  Feel free to reach out — I usually respond within 24–48 hours.
+                </p>
               </div>
-            </motion.div>
+            </div>
+
+            <div className="mt-8 space-y-3">
+              <a href="mailto:sadikyasineftee@gmail.com">
+                <Button className="w-full gap-2 font-medium">
+                  <Mail size={14} />
+                  Send an Email
+                </Button>
+              </a>
+              <a href="https://linkedin.com/in/sadik-yasin" target="_blank" rel="noreferrer">
+                <Button variant="outline" className="w-full gap-2 font-medium">
+                  <Linkedin size={14} />
+                  Connect on LinkedIn
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

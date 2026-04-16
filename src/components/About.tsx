@@ -1,125 +1,66 @@
-
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Zap, Settings } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { profile } from "@/lib/data";
+import { Brain, Code2, Package } from "lucide-react";
 
-const About = () => {
+const highlights = [
+  { icon: Brain, label: "NLP & HCI Researcher", desc: "Studying how humans interact with AI systems and building intelligent language models." },
+  { icon: Code2, label: "Full-Stack Engineer", desc: "From ML pipelines to web applications — end-to-end product development." },
+  { icon: Package, label: "Product Manager", desc: "Driving operational products at ShopUp from concept through launch." },
+];
+
+export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
-  const highlights = [
-    {
-      icon: Code,
-      title: "Full-Stack Development",
-      description: "Experienced in building scalable web applications using modern frameworks and technologies"
-    },
-    {
-      icon: Zap,
-      title: "Machine Learning Engineering",
-      description: "Specialized in NLP, chatbot development, and credit scoring systems for fintech applications"
-    },
-    {
-      icon: Settings,
-      title: "Product Management",
-      description: "Currently contributing to operational optimization and data-driven decision making at ShopUp"
-    }
-  ];
+  const inView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} id="about" className="py-20 px-6 bg-charcoal-900/20">
-      <div className="max-w-6xl mx-auto">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
+    <section id="about" ref={ref} className="py-24 border-t border-border">
+      <div className="max-w-5xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="grid lg:grid-cols-2 gap-16 items-start"
         >
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6">
-            About <span className="gradient-text">Me</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-icy-blue-400 to-lavender-400 rounded-full mx-auto" />
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div 
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <div className="space-y-6 text-lg font-light leading-relaxed text-foreground/80">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                I'm a passionate <span className="text-icy-blue-400 font-medium">Software Engineer</span> with 
-                hands-on experience in building scalable applications and machine learning solutions. 
-                My journey spans from developing intelligent <span className="text-lavender-400 font-medium">chatbots</span> 
-                and <span className="text-icy-blue-400 font-medium">credit scoring systems</span> to creating 
-                comprehensive web applications that solve real-world problems.
-              </motion.p>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-              >
-                Currently serving as a <span className="text-lavender-400 font-medium">Product Management Intern</span> at 
-                ShopUp, I focus on optimizing hub operations and implementing data-driven solutions that enhance 
-                operational efficiency. My technical expertise extends across the full development stack, 
-                from backend systems to user-facing applications.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-              >
-                I thrive in collaborative environments where I can leverage my technical skills to build 
-                innovative solutions that make a meaningful impact. Whether it's developing machine learning 
-                models for fintech applications or creating intuitive web interfaces, I'm driven by the 
-                challenge of turning complex problems into elegant, scalable solutions.
-              </motion.p>
+          <div>
+            <span className="font-mono-custom text-xs text-primary uppercase tracking-widest mb-3 block">About</span>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground tracking-tight mb-6">
+              Researcher & Builder
+            </h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                I'm a graduate student and researcher at <span className="text-foreground font-medium">Islamic University of Technology</span>, specializing in Natural Language Processing and Human-Computer Interaction. My work explores how AI systems can be designed to be more human-centered.
+              </p>
+              <p>
+                Outside academia, I work as <span className="text-foreground font-medium">Junior Product Manager at ShopUp</span>, where I own logistics and fulfillment product flows impacting thousands of daily operations.
+              </p>
+              <p>
+                I thrive at the intersection of research and real-world impact — turning complex problems into elegant, measurable solutions.
+              </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          >
-            {highlights.map((highlight, index) => (
+          <div className="space-y-4">
+            {highlights.map((h, i) => (
               <motion.div
-                key={index}
-                className="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300"
-                whileHover={{ y: -5, scale: 1.02 }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.6, delay: 0.4 + (index * 0.2) }}
+                key={h.label}
+                className="flex gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors"
+                initial={{ opacity: 0, x: 20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
               >
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-icy-blue-400/20 to-lavender-400/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <highlight.icon className="w-6 h-6 text-icy-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-lavender-400 mb-2">
-                      {highlight.title}
-                    </h4>
-                    <p className="text-foreground/70 font-light text-sm leading-relaxed">
-                      {highlight.description}
-                    </p>
-                  </div>
+                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <h.icon size={16} className="text-primary" />
+                </div>
+                <div>
+                  <div className="font-medium text-foreground text-sm mb-1">{h.label}</div>
+                  <div className="text-sm text-muted-foreground leading-relaxed">{h.desc}</div>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

@@ -1,146 +1,135 @@
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import { motion, AnimatePresence } from "framer-motion";
+import { Moon, Sun, Menu, X, Github, Linkedin, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, Github, Linkedin, Mail, X } from "lucide-react";
 
-const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const navItems = [
+  { href: "#about", label: "About" },
+  { href: "#research", label: "Research" },
+  { href: "#publications", label: "Publications" },
+  { href: "#experience", label: "Experience" },
+  { href: "#education", label: "Education" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
 
+export default function Navigation() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { href: "#about", label: "About" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#publications", label: "Publications" },
-    { href: "#education", label: "Education" },
-    { href: "#skills", label: "Skills" },
-    { href: "#activities", label: "Activities" },
-    { href: "#contact", label: "Contact" },
-  ];
+  const isDark = resolvedTheme === "dark";
 
   return (
     <>
-      <nav
+      <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/90 backdrop-blur-lg border-b border-white/10"
-            : "bg-transparent"
+          scrolled ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm" : "bg-transparent"
         }`}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="font-medium text-xl gradient-text">
-              Sadik Yasin Eftee
-            </div>
+        <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#" className="font-display text-base font-semibold text-foreground tracking-tight">
+            Sadik<span className="text-primary">.</span>
+          </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground/80 hover:text-icy-blue-400 transition-colors duration-200 font-light tracking-tight"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-
-            <div className="hidden md:flex items-center space-x-4">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
               <a
-                href="https://github.com/Sadik-Yasin-Eftee"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
+                key={item.href}
+                href={item.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium"
               >
-                <Github size={20} />
+                {item.label}
               </a>
-              <a
-                href="https://linkedin.com/in/sadik-yasin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="mailto:sadikyasineftee@gmail.com"
-                className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
-              >
-                <Mail size={20} />
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(true)}
-            >
-              <Menu size={24} />
-            </Button>
+            ))}
           </div>
-        </div>
-      </nav>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm animate-fade-in"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          <div className="absolute right-0 top-0 h-full w-80 bg-charcoal-900/95 backdrop-blur-lg border-l border-white/10 p-6 animate-slide-in-right">
-            {/* Close Button */}
-            <div className="flex justify-end mb-8">
+          <div className="flex items-center gap-2">
+            <a href="https://github.com/Sadik-Yasin-Eftee" target="_blank" rel="noreferrer" className="hidden md:flex text-muted-foreground hover:text-foreground transition-colors p-2">
+              <Github size={16} />
+            </a>
+            <a href="https://linkedin.com/in/sadik-yasin" target="_blank" rel="noreferrer" className="hidden md:flex text-muted-foreground hover:text-foreground transition-colors p-2">
+              <Linkedin size={16} />
+            </a>
+            <a href="https://scholar.google.com/citations?user=oZahYhMAAAAJ" target="_blank" rel="noreferrer" className="hidden md:flex text-muted-foreground hover:text-foreground transition-colors p-2">
+              <BookOpen size={16} />
+            </a>
+            {mounted && (
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-foreground/60 hover:text-icy-blue-400 transition-colors"
+                className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                onClick={() => setTheme(isDark ? "light" : "dark")}
+                aria-label="Toggle theme"
               >
-                <X size={24} />
+                {isDark ? <Sun size={15} /> : <Moon size={15} />}
               </Button>
-            </div>
-            
-            <div className="flex flex-col space-y-6">
-              {navItems.map((item, index) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xl font-light text-foreground/80 hover:text-icy-blue-400 transition-colors animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <div className="flex space-x-6 pt-8 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-                <a href="https://github.com/Sadik-Yasin-Eftee" target="_blank" rel="noopener noreferrer">
-                  <Github size={24} className="text-foreground/60 hover:text-icy-blue-400 transition-colors" />
-                </a>
-                <a href="https://linkedin.com/in/sadik-yasin" target="_blank" rel="noopener noreferrer">
-                  <Linkedin size={24} className="text-foreground/60 hover:text-icy-blue-400 transition-colors" />
-                </a>
-                <a href="mailto:sadikyasineftee@gmail.com">
-                  <Mail size={24} className="text-foreground/60 hover:text-icy-blue-400 transition-colors" />
-                </a>
-              </div>
-            </div>
+            )}
+            <Button variant="ghost" size="icon" className="md:hidden h-8 w-8" onClick={() => setMobileOpen(true)}>
+              <Menu size={18} />
+            </Button>
           </div>
         </div>
-      )}
+      </motion.nav>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-xl" onClick={() => setMobileOpen(false)} />
+            <motion.div
+              className="absolute right-0 top-0 h-full w-72 bg-background border-l border-border p-6 flex flex-col"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <div className="flex justify-end mb-8">
+                <Button variant="ghost" size="icon" onClick={() => setMobileOpen(false)}>
+                  <X size={18} />
+                </Button>
+              </div>
+              <div className="flex flex-col gap-1">
+                {navItems.map((item, i) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-lg font-medium text-foreground py-3 border-b border-border/50 hover:text-primary transition-colors"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </div>
+              <div className="mt-auto flex gap-4 pt-8">
+                <a href="https://github.com/Sadik-Yasin-Eftee" target="_blank" rel="noreferrer"><Github size={20} className="text-muted-foreground hover:text-foreground" /></a>
+                <a href="https://linkedin.com/in/sadik-yasin" target="_blank" rel="noreferrer"><Linkedin size={20} className="text-muted-foreground hover:text-foreground" /></a>
+                <a href="https://scholar.google.com/citations?user=oZahYhMAAAAJ" target="_blank" rel="noreferrer"><BookOpen size={20} className="text-muted-foreground hover:text-foreground" /></a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
-};
-
-export default Navigation;
+}

@@ -1,165 +1,155 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { ArrowDown, Download, Mail, Github, Linkedin, BookOpen, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { profile } from "@/lib/data";
 
-const Hero = () => {
-  const handleDownloadResume = () => {
-    const link = document.createElement("a");
-    link.href = "/doc/Sadik_Yasin_Eftee_Resume.pdf";
-    link.download = "Sadik_Yasin_Eftee_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
+export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-icy-blue-900/10 via-transparent to-lavender-900/10" />
+    <section className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Subtle dot grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.035] dark:opacity-[0.06]"
+        style={{
+          backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+      {/* Gradient blobs */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-primary/3 rounded-full blur-3xl" />
 
-      <motion.div
-        className="max-w-7xl mx-auto relative z-10 py-16 sm:py-20"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left side - Text content */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left order-2 lg:order-1">
-            <div className="space-y-4 sm:space-y-6">
-              <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="gradient-text">Sadik Yasin Eftee</span>
-              </motion.h1>
-
-              <motion.div
-                className="space-y-2 sm:space-y-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <h2 className="text-lg sm:text-xl md:text-2xl font-light text-foreground/90 tracking-wide">
-                  Product Manager & Software Engineer
-                </h2>
-                <p className="text-base sm:text-lg text-foreground/70 font-light">
-                  Machine Learning • Web Development • Product Management
-                </p>
-              </motion.div>
-
-              <motion.div
-                className="space-y-3 sm:space-y-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <p className="text-base sm:text-lg text-foreground/80 font-light leading-relaxed">
-                  Experienced in{" "}
-                  <span className="text-icy-blue-400 font-medium">
-                    Machine Learning Engineering
-                  </span>
-                  ,
-                  <span className="text-lavender-400 font-medium">
-                    {" "}
-                    Full-Stack Development
-                  </span>
-                  , and
-                  <span className="text-icy-blue-400 font-medium">
-                    {" "}
-                    Product Management
-                  </span>
-                </p>
-                <p className="text-sm sm:text-base text-foreground/70 font-light">
-                  Turning bold ideas into real-world impact by driving products
-                  from concept to launch with a focus on innovation, usability,
-                  and performance
-                </p>
-              </motion.div>
-            </div>
-
+      <div className="max-w-5xl mx-auto px-6 py-32 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Text */}
+          <div className="order-2 lg:order-1">
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start items-center pt-6 sm:pt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <span className="font-mono-custom text-xs text-primary uppercase tracking-widest mb-4 block">
+                Academic Portfolio
+              </span>
+
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-none mb-4">
+                {profile.name.split(" ")[0]}{" "}
+                <span className="text-primary">{profile.name.split(" ").slice(1).join(" ")}</span>
+              </h1>
+
+              <p className="text-lg text-muted-foreground font-light mb-2">{profile.title}</p>
+
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+                <MapPin size={13} />
+                <span>{profile.location}</span>
+              </div>
+
+              <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-lg">
+                {profile.bio}
+              </p>
+
+              {/* Stats */}
+              <div className="flex gap-8 mb-8">
+                {profile.stats.map((s) => (
+                  <div key={s.label}>
+                    <div className="font-display text-2xl font-bold text-foreground">{s.value}</div>
+                    <div className="text-xs text-muted-foreground font-mono-custom uppercase tracking-wide mt-0.5">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Interests */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {profile.interests.slice(0, 4).map((i) => (
+                  <Badge key={i} variant="secondary" className="text-xs font-normal">{i}</Badge>
+                ))}
+              </div>
+
+              {/* CTA buttons */}
+              <div className="flex flex-wrap gap-3">
                 <Button
-                  className="neumorphic-btn px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-light tracking-wide group w-full sm:w-auto"
-                  onClick={handleDownloadResume}
+                  size="sm"
+                  className="gap-2 font-medium"
+                  onClick={() => {
+                    const a = document.createElement("a");
+                    a.href = "/doc/Sadik_Yasin_Eftee_Resume.pdf";
+                    a.download = "Sadik_Yasin_Eftee_CV.pdf";
+                    a.click();
+                  }}
                 >
-                  <Download className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-bounce" />
-                  Download Resume
+                  <Download size={14} />
+                  Download CV
                 </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
                 <Button
+                  size="sm"
                   variant="outline"
-                  className="px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-light tracking-wide border-icy-blue-400/30 hover:border-icy-blue-400/60 hover:bg-icy-blue-400/10 w-full sm:w-auto"
-                  onClick={() =>
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
+                  className="gap-2 font-medium"
+                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  Get In Touch
+                  <Mail size={14} />
+                  Contact Me
                 </Button>
-              </motion.div>
+                <a href={profile.github} target="_blank" rel="noreferrer">
+                  <Button size="sm" variant="ghost" className="gap-2 text-muted-foreground">
+                    <Github size={14} />
+                    GitHub
+                  </Button>
+                </a>
+                <a href={profile.scholar} target="_blank" rel="noreferrer">
+                  <Button size="sm" variant="ghost" className="gap-2 text-muted-foreground">
+                    <BookOpen size={14} />
+                    Scholar
+                  </Button>
+                </a>
+              </div>
             </motion.div>
           </div>
 
-          {/* Right side - Profile picture */}
+          {/* Profile Image */}
           <motion.div
-            className="flex justify-center lg:justify-end order-1 lg:order-2"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="order-1 lg:order-2 flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <div
-              className="w-48 h-60 sm:w-56 sm:h-70 md:w-64 md:h-80 lg:w-72 lg:h-90 xl:w-80 xl:h-96 rounded-full overflow-hidden"
-              style={{ borderRadius: "50%" }}
-            >
-              <img
-                src="/lovable-uploads/3dad034d-aea3-42eb-b907-76a133a18fb1.png"
-                alt="Sadik Yasin Eftee"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative">
+              <div className="w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden border border-border shadow-2xl">
+                <img
+                  src={profile.photo}
+                  alt={profile.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Floating badge */}
+              <motion.div
+                className="absolute -bottom-3 -right-3 bg-background border border-border rounded-xl px-3 py-2 shadow-lg"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-xs font-medium text-foreground">Open to research</span>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
-      </motion.div>
 
-      <motion.div
-        className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 xl:bottom-32 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        whileHover={{ y: -5 }}
-      >
+        {/* Scroll indicator */}
         <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="cursor-pointer p-2"
-          onClick={() =>
-            document
-              .getElementById("about")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
         >
-          <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-foreground/40 hover:text-foreground/60 transition-colors" />
+          <span className="text-xs font-mono-custom">scroll</span>
+          <motion.div animate={{ y: [0, 4, 0] }} transition={{ duration: 1.8, repeat: Infinity }}>
+            <ArrowDown size={14} />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
-};
-
-export default Hero;
+}
