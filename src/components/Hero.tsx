@@ -108,24 +108,58 @@ export default function Hero() {
           {/* Profile Image */}
           <motion.div
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
           >
             <div className="relative">
-              <div className="w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden border border-border shadow-2xl">
-                <img
-                  src={profile.photo}
+              {/* Glow / ambient ring behind the image */}
+              <div className="absolute inset-0 rounded-3xl bg-primary/10 blur-2xl scale-110 opacity-60" />
+
+              {/* Image container — no hard border, masked edges */}
+              <div
+                className="relative w-64 md:w-80 lg:w-[360px] overflow-hidden rounded-3xl"
+                style={{
+                  /* mask fades all four edges into transparency so the image
+                     bleeds seamlessly into whatever background sits behind it */
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse 88% 92% at 50% 44%, black 55%, transparent 100%)",
+                  maskImage:
+                    "radial-gradient(ellipse 88% 92% at 50% 44%, black 55%, transparent 100%)",
+                }}
+              >
+                <motion.img
+                  src="/lovable-uploads/profile-hero.png"
                   alt={profile.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover object-top"
+                  style={{
+                    /* desaturate the busy coloured background just a touch so
+                       only the person pops; the white BG of the photo will
+                       dissolve into the site background via the mask above */
+                    filter: "saturate(0.85) contrast(1.04)",
+                  }}
+                  initial={{ scale: 1.06 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 1.1, ease: "easeOut" }}
+                />
+
+                {/* bottom colour-wash overlay: blends the white photo BG
+                    with the site background colour so there's no hard cut */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(to top, hsl(var(--background)) 0%, transparent 38%)",
+                  }}
                 />
               </div>
+
               {/* Floating badge */}
               <motion.div
-                className="absolute -bottom-3 -right-3 bg-background border border-border rounded-xl px-3 py-2 shadow-lg"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 }}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-md border border-border rounded-xl px-3 py-2 shadow-lg whitespace-nowrap"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
               >
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />

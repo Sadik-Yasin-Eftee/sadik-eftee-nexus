@@ -10,7 +10,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/sadik-yasin",
   scholar: "https://scholar.google.com/citations?user=oZahYhMAAAAJ",
   portfolio: "https://sadikyasineftee.vercel.app",
-  photo: "/lovable-uploads/41c52982-1940-45df-bfe8-85ef8b518a80.png",
+  photo: "/lovable-uploads/profile-hero.png",
   photoAlt: "/lovable-uploads/3dad034d-aea3-42eb-b907-76a133a18fb1.png",
   interests: ["Natural Language Processing", "Human-Computer Interaction", "Artificial Intelligence", "Machine Learning", "Robotics", "Software Engineering"],
   stats: [
